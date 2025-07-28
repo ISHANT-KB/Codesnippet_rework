@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Enhanced Code Showcase</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/code_pages.css" type="text/css" media="all" />
+   <script src="/js/code_pages.js" type="text/javascript" charset="utf-8"></script>
+   <link rel="stylesheet" href="/css/header.css" type="text/css" media="all" />
+   <script src="/js/header.js" type="text/javascript" charset="utf-8"></script>
+   
+   
+   
+   
+</head>
+
+<body>
+   
+   <header class="header">
+      <div class="header-container">
+         <div class="logo-section">
+            <img class="logo-img" src="/images/logo.png" alt="logo" />
+            <a href="#" class="logo-text">CodeWithIshant</a>
+         </div>
+         <nav class="navbar" id="navbar">
+            <a href="/index.html" class="nav-link active">Home</a>
+            <a href="/projects.html" class="nav-link">Projects</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/feedback.html" class="nav-link">Feedback</a>
+         </nav>
+         <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            ☰
+         </button>
+      </div>
+   </header>
+   
+   <div class="container">
+      <section class="head">
+         <h1>Code Showcase</h1>
+         <p>Beautiful, interactive code presentation with modern design and enhanced user experience</p>
+      </section>
+      
+      <div class="code-section">
+         <div class="code-wrapper">
+            <div class="code-header">
+               <div class="code-info">
+                  <div class="code-title">
+                     <div class="code-icon">sql-icon</div>
+                     Python Bank Management System
+                  </div>
+                  <span class="language-badge">SQL</span>
+               </div>
+               <button class="copy-btn" onclick="copyCode(this)">
+                  <span>📋</span>
+                  <span class="copy-text">Copy</span>
+               </button>
+            </div>
+            <div class="code-block">
+               <pre><code class="language-sql">
+CREATE DATABASE IF NOT EXISTS airline_system;
+USE airline_system;
+
+-- Flights Table
+CREATE TABLE IF NOT EXISTS flights (
+flight_id INT AUTO_INCREMENT PRIMARY KEY,
+flight_name VARCHAR(100),
+source VARCHAR(100),
+destination VARCHAR(100),
+departure_time VARCHAR(50)
+);
+
+-- Bookings Table
+CREATE TABLE IF NOT EXISTS bookings (
+booking_id INT AUTO_INCREMENT PRIMARY KEY,
+flight_id INT,
+passenger_name VARCHAR(100),
+FOREIGN KEY (flight_id) REFERENCES flights(flight_id)
+);
+                    </code></pre>
+            </div>
+            
+            
+            
+            
+            
+         </div>
+         
+         
+         <div class="code-wrapper">
+            
+            <div class="code-header">
+               <div class="code-info">
+                  <div class="code-title">
+                     <div class="code-icon">🐍</div>
+                     Python Bank Management System
+                  </div>
+                  <span class="language-badge">Python</span>
+               </div>
+               <button class="copy-btn" onclick="copyCode(this)">
+                  <span>📋</span>
+                  <span class="copy-text">Copy</span>
+               </button>
+            </div>
+            <div class="code-block">
+               <pre><code class="language-python">
+import mysql.connector
+
+# Connect to MySQL
+conn = mysql.connector.connect(
+host='localhost',
+user='root',
+password='your_mysql_password', # Change this
+database='airline_system'
+)
+cursor = conn.cursor()
+
+def add_flight():
+name = input("Enter Flight Name: ")
+   source = input("Enter Source: ")
+   dest = input("Enter Destination: ")
+   time = input("Enter Departure Time: ")
+   query = "INSERT INTO flights (flight_name, source, destination, departure_time) VALUES (%s, %s, %s, %s)"
+   cursor.execute(query, (name, source, dest, time))
+   conn.commit()
+   print("✅ Flight added successfully!\n")
+
+def view_flights():
+   cursor.execute("SELECT * FROM flights")
+   flights = cursor.fetchall()
+   print("\n--- Available Flights ---")
+   for f in flights:
+   print(f"ID: {f[0]}, Name: {f[1]}, From: {f[2]}, To: {f[3]}, Time: {f[4]}")
+   print()
+
+def book_ticket():
+   view_flights()
+   fid = input("Enter Flight ID to Book: ")
+   name = input("Enter Passenger Name: ")
+   query = "INSERT INTO bookings (flight_id, passenger_name) VALUES (%s, %s)"
+   cursor.execute(query, (fid, name))
+   conn.commit()
+   print("🎟️ Ticket booked successfully!\n")
+
+def view_bookings():
+   cursor.execute("""
+   SELECT b.booking_id, b.passenger_name, f.flight_name
+   FROM bookings b
+   JOIN flights f ON b.flight_id = f.flight_id
+   """)
+   bookings = cursor.fetchall()
+   print("\n--- All Bookings ---")
+   for b in bookings:
+   print(f"Booking ID: {b[0]}, Passenger: {b[1]}, Flight: {b[2]}")
+   print()
+
+def cancel_booking():
+   view_bookings()
+   bid = input("Enter Booking ID to cancel: ")
+   cursor.execute("DELETE FROM bookings WHERE booking_id = %s", (bid,))
+   conn.commit()
+   print("❌ Booking cancelled.\n")
+
+def main():
+while True:
+   print("📋 Airline Management System")
+   print("1. Add Flight")
+   print("2. View Flights")
+   print("3. Book Ticket")
+   print("4. View Bookings")
+   print("5. Cancel Booking")
+   print("6. Exit")
+   
+   choice = input("Enter your choice: ")
+   print()
+   
+   if choice == '1':
+      add_flight()
+   elif choice == '2':
+      view_flights()
+   elif choice == '3':
+      book_ticket()
+   elif choice == '4':
+      view_bookings()
+   elif choice == '5':
+      cancel_booking()
+   elif choice == '6':
+      break
+   else:
+      print("Invalid choice. Try again.\n")
+
+cursor.close()
+conn.close()
+print("🔚 Program exited.")
+
+if __name__ == "__main__":
+   main()</code></pre>
+            </div>
+         </div>
+      </div>
+   </div>
+   
+   
+</body>
+
+</html>

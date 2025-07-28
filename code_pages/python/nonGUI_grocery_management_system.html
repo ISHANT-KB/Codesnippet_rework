@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Enhanced Code Showcase</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/code_pages.css" type="text/css" media="all" />
+   <script src="/js/code_pages.js" type="text/javascript" charset="utf-8"></script>
+   <link rel="stylesheet" href="/css/header.css" type="text/css" media="all" />
+   <script src="/js/header.js" type="text/javascript" charset="utf-8"></script>
+   
+   
+   
+   
+</head>
+
+<body>
+   
+   <header class="header">
+      <div class="header-container">
+         <div class="logo-section">
+            <img class="logo-img" src="/images/logo.png" alt="logo" />
+            <a href="#" class="logo-text">CodeWithIshant</a>
+         </div>
+         <nav class="navbar" id="navbar">
+            <a href="/index.html" class="nav-link active">Home</a>
+            <a href="/projects.html" class="nav-link">Projects</a>
+            <a href="/about.html" class="nav-link">About</a>
+            <a href="/feedback.html" class="nav-link">Feedback</a>
+         </nav>
+         <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            ☰
+         </button>
+      </div>
+   </header>
+   
+   <div class="container">
+      <section class="head">
+         <h1>Code Showcase</h1>
+         <p>Beautiful, interactive code presentation with modern design and enhanced user experience</p>
+      </section>
+      
+      <div class="code-section">
+         <div class="code-wrapper">
+            <div class="code-header">
+               <div class="code-info">
+                  <div class="code-title">
+                     <div class="code-icon">sql-icon</div>
+                     Python Grocery Management System
+                  </div>
+                  <span class="language-badge">SQL</span>
+               </div>
+               <button class="copy-btn" onclick="copyCode(this)">
+                  <span>📋</span>
+                  <span class="copy-text">Copy</span>
+               </button>
+            </div>
+            <div class="code-block">
+               <pre><code class="language-sql">
+-- Step 1: Create Database
+CREATE DATABASE IF NOT EXISTS grocery_db;
+
+-- Step 2: Use Database
+USE grocery_db;
+
+-- Step 3: Create Table
+CREATE TABLE IF NOT EXISTS grocery_items (
+item_id INT AUTO_INCREMENT PRIMARY KEY,
+item_name VARCHAR(100) NOT NULL,
+price FLOAT NOT NULL,
+quantity INT NOT NULL
+);
+                    </code></pre>
+            </div>
+         </div>
+         
+         
+         <div class="code-wrapper">
+            <div class="code-header">
+               <div class="code-info">
+                  <div class="code-title">
+                     <div class="code-icon">🐍</div>
+                     Python Bank Management System
+                  </div>
+                  <span class="language-badge">Python</span>
+               </div>
+               <button class="copy-btn" onclick="copyCode(this)">
+                  <span>📋</span>
+                  <span class="copy-text">Copy</span>
+               </button>
+            </div>
+            <div class="code-block">
+               <pre><code class="language-python">
+import mysql.connector
+
+# Connect to MySQL
+conn = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="your_mysql_password",  # Change this
+    database="grocery_db"
+)
+
+cursor = conn.cursor()
+
+# Function to add an item
+def add_item():
+    name = input("Enter item name: ")
+    price = float(input("Enter item price: "))
+    quantity = int(input("Enter quantity: "))
+    query = "INSERT INTO grocery_items (item_name, price, quantity) VALUES (%s, %s, %s)"
+    cursor.execute(query, (name, price, quantity))
+    conn.commit()
+    print("✅ Item added successfully.")
+
+# Function to view all items
+def view_items():
+    cursor.execute("SELECT * FROM grocery_items")
+    rows = cursor.fetchall()
+    print("\n📦 Inventory:")
+    print("ID | Name         | Price   | Quantity")
+    print("---------------------------------------")
+    for row in rows:
+        print(f"{row[0]:<3} | {row[1]:<15} | ₹{row[2]:<8.2f} | {row[3]:<5}")
+    print()
+
+# Function to update item quantity or price
+def update_item():
+    item_id = int(input("Enter item ID to update: "))
+    new_price = float(input("Enter new price: "))
+    new_quantity = int(input("Enter new quantity: "))
+    query = "UPDATE grocery_items SET price = %s, quantity = %s WHERE item_id = %s"
+    cursor.execute(query, (new_price, new_quantity, item_id))
+    conn.commit()
+    print("🔄 Item updated successfully.")
+
+# Function to delete an item
+def delete_item():
+    item_id = int(input("Enter item ID to delete: "))
+    cursor.execute("DELETE FROM grocery_items WHERE item_id = %s", (item_id,))
+    conn.commit()
+    print("🗑️ Item deleted successfully.")
+
+# Function to search for an item by name
+def search_item():
+    name = input("Enter item name to search: ")
+    query = "SELECT * FROM grocery_items WHERE item_name LIKE %s"
+    cursor.execute(query, (f"%{name}%",))
+    rows = cursor.fetchall()
+    print("\n🔍 Search Results:")
+    for row in rows:
+        print(f"ID: {row[0]} | Name: {row[1]} | Price: ₹{row[2]:.2f} | Quantity: {row[3]}")
+    if not rows:
+        print("❌ No matching items found.")
+
+# Main menu
+def menu():
+    while True:
+        print("\n--- Grocery Management System ---")
+        print("1. Add Item")
+        print("2. View Items")
+        print("3. Update Item")
+        print("4. Delete Item")
+        print("5. Search Item")
+        print("6. Exit")
+
+        choice = input("Enter choice: ")
+
+        if choice == '1':
+            add_item()
+        elif choice == '2':
+            view_items()
+        elif choice == '3':
+            update_item()
+        elif choice == '4':
+            delete_item()
+        elif choice == '5':
+            search_item()
+        elif choice == '6':
+            print("👋 Exiting... Thank you!")
+            break
+        else:
+            print("⚠️ Invalid choice. Please try again.")
+
+# Start the app
+menu()
+
+# Close MySQL connection
+cursor.close()
+conn.close()
+</code></pre>
+            </div>
+         </div>
+      </div>
+   </div>
+   
+   
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="/codes/webDev/snake/style.css" type="text/css" media="all" />
+</head>
+<body>
+    <h1>🐍 Snake Game</h1>
+    
+    <div class="game-container">
+        <div class="score-container">
+            <div>Score: <span id="score">0</span></div>
+            <div>High Score: <span id="highScore">0</span></div>
+        </div>
+        
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        
+        <div class="controls">
+            Use arrow keys or WASD to control the snake
+        </div>
+        
+        <div class="mobile-controls">
+            <button class="mobile-btn" data-direction="up">↑</button>
+            <button class="mobile-btn" data-direction="left">←</button>
+            <button class="mobile-btn" data-direction="right">→</button>
+            <button class="mobile-btn" data-direction="down">↓</button>
+        </div>
+    </div>
+
+    <div class="game-over" id="gameOver">
+        <h2>Game Over!</h2>
+        <p>Your Score: <span id="finalScore">0</span></p>
+        <button class="restart-btn" onclick="restartGame()">Play Again</button>
+    </div>
+<script src="/codes/webDev/snake/main.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

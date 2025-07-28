@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Python Cheatsheet</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="/css/cheetsheet_pages.css" type="text/css" media="all" />
+   <script src="/js/cheatsheet_pages.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+   <main>
+      <h1>Python Cheatsheet</h1>
+      
+      <section class="intro">
+         <p>A comprehensive Python cheatsheet for all Python developers</p>
+      </section>
+      
+      <h2>Basics</h2>
+      <p>Basic syntax from the Python programming language</p>
+      
+      <h3>Showing Output To User</h3>
+      <p>The <strong>print</strong> function is used to display or print output as follows:</p>
+      
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">print("Content that you wanna print on the screen")</code></pre>
+      </div>
+      <p>we can display the content present in an object using the <strong>print</strong> function as follows:</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">var1 = "Shruti"
+print("Hi my name is: ", var1)</code></pre>
+      </div>
+      
+      <h3>Taking Input From the User</h3>
+      <p>The <strong>input</strong> function is used to take input as a string or character from the user as follows:</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">var1 = input("Enter your name: ")
+print("My name is: ", var1)</code></pre>
+      </div>
+      
+      <p>To take input in the form of other data types, we need to use typecasting along with input, we use as follows: </p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+   #to take input as integer
+   var1 = int(input("Enter a integer value"))
+   #to take input as float
+   var2 = int(input("Enter a float value"))
+   print(var1)
+   print(var2)
+         </code></pre>
+      </div>
+      
+      <h3><strong>range</strong> Function</h3>
+      <p>The <strong>range</strong> function returns a sequenece of numbers, e.g., numbers starting from 0 to n-1 for <strong>range(0,n): </strong> </p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+   range(int_start_value, int_stop_value, int_step_value)
+         </code></pre>
+      </div>
+      <p>Here the start value and step value is optional but stop value is compulsory parameter in <strong>range</strong> function . By default both start and step value is 1. </p>
+      <p>Example: </p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+#display all even numbers between 1 and 65
+for i in range(0,65,2):
+   print(i)
+         </code></pre>
+      </div>
+      
+      <h2>Comments</h2>
+      <p>Comments are used to make the code more understandable for the programmers and they are ignored or not executed by the inpreter or compiler.</p>
+      <h3>Single Line Comment</h3>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+   #this is a single line comment
+      </code></pre>
+      </div>
+      <h3> Multi line commenr</h3>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+   '''this is a 
+   multi line 
+   comment '''
+      </code></pre>
+      </div>
+      
+      <h2>Escape Sequence</h2>
+      <p>An escape sequence is a sequence of character that does not represent itself. Instead it is translated into another character when used inside a string literal or character. Escape sequence are as follows: </p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+print("\\") # Backslash escape sequence
+print("\'") # Single quote escape sequence
+print("\"") # Double quote escape sequence
+print("\n") # Newline escape sequence
+print("\t") # Tab escape sequence
+print("\r") # Carriage return escape sequence
+print("\b") # Backspace escape sequence
+print("\f") # Form feed escape sequence
+print("\v") # Vertical tab escape sequence
+print("\a") # Bell/alert sound escape sequence
+print("\ooo") # Octal value (e.g. "\141" is 'a')
+print("\xhh") # Hex value (e.g. "\x61" is 'a')
+      </code></pre>
+      </div>
+      
+      
+      
+      <h3>Variables and Data Types</h3>
+      <p>Variables are the container that stores data.</p>
+      <p>Python supports various data types including strings, integers, floats, and booleans:</p>
+      
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python"># Variables
+name = "Python"          # String
+age = 30                 # Integer
+height = 5.9            # Float
+is_awesome = True       # Boolean
+
+# Print variables
+print(f"Language: {name}")
+print(f"Years old: {age}")
+print(f"Height: {height} feet")
+print(f"Is awesome: {is_awesome}")</code></pre>
+      </div>
+      
+      <p><span style="color: red;">NOTE:</span> Use <strong>type()</strong> to check types and <strong>int(), str(), float()</strong> to typecast.
+      </p>
+      
+      
+      
+      <h2>Operators</h2>
+      <p>Operators are the character that is used to perform arithmatic, logical or comarision operation on the values or objects.</p>
+      <h3>Arithmetic Operators</h3>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+print(5 + 2) # + Addition → 7
+print(5 - 2) # - Subtraction → 3
+print(5 * 2) # * Multiplication → 10
+print(5 / 2) # / Division (float) → 2.5
+print(5 // 2) # // Floor division → 2
+print(5 % 2) # % Modulus (remainder) → 1
+print(2 ** 3) # ** Exponentiation → 8
+      </code></pre>
+      </div>
+      
+      <h3>Comparison(Relational) Operators</h3>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+print(5 == 5)   # == Equal to → True
+print(5 != 3)   # != Not equal to → True
+print(5 > 3)    # > Greater than → True
+print(5 < 3)    # < Less than → False
+print(5 >= 5)   # >= Greater than or equal to → True
+print(5 <= 4)   # <= Less than or equal to → False
+      </code></pre>
+      </div>
+      
+      <h3>Assignment Operators</h3>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+x = 5 # = Assign 5 to x
+x += 3 # += Add and assign → x = x + 3 → 8
+x -= 2 # -= Subtract and assign → x = x - 2 → 6
+x *= 2 # *= Multiply and assign → x = x * 2 → 12
+x /= 3 # /= Divide and assign → x = x / 3 → 4.0
+x //= 2 # //= Floor divide and assign
+x %= 3 # %= Modulus and assign
+x **= 2 # **= Power and assign
+      </code></pre>
+      </div>
+      
+      <h3>Logical Operators</h3>
+      <p>Used to combine boolean expressions(mostly in conditions).</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+print(True and False) # and Logical AND → False
+print(True or False) # or Logical OR → True
+print(not True) # not Logical NOT → False
+      </code></pre>
+      </div>
+      
+      <h3>Bitwise Operators</h3>
+      <p>Used at binary level(bitwise manupulation).</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+print(5 & 3)   # & Bitwise AND → 1
+print(5 | 3)   # | Bitwise OR → 7
+print(5 ^ 3)   # ^ Bitwise XOR → 6
+print(~5)      # ~ Bitwise NOT → -6
+print(5 << 1)  # << Left shift → 10
+print(5 >> 1)  # >> Right shift → 2
+      </code></pre>
+      </div>
+      
+      <h3>Membership Operators</h3>
+      <p>Checks presence inside iterable(string,list, etc.)</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+print('a' in 'apple') # in → True
+print('x' not in 'apple') # not in → True
+      </code></pre>
+      </div>
+      
+      <h3>Identity Operators</h3>
+      <p>Used to compare memory locatin(identity), not value.</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+a = [1, 2]
+b = a
+c = [1, 2]
+
+print(a is b) # is → True (same object)
+print(a is c) # is → False (different object)
+print(a is not c) # is not → True
+      </code></pre>
+      </div>
+      
+      <h3>Ternary/Conditional Operators</h3>
+      <p>One-line if-else condition.</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+x = 10
+result = "Even" if x % 2 == 0 else "Odd"
+print(result) # Even
+      </code></pre>
+      </div>
+      
+      <h2>Indentation</h2>
+      <p>In Python, indentation means the code is written with some spaces or tabs into many different blocks of code to indent it so that the interpreter can execute Python code properly.</p>
+      <p>Indentation is is used in conditional statements, loop control statements and function defination.Indent specifies the block of code to be executed according to the condition and call</p>
+      
+      <h2>Conditional Statements</h2>
+      <p>The <strong>if</strong>,<strong>elif</strong>, and <strong>else</strong> statements are the conditiona statements in Python, and these implement selectin contructs(decision constructs).</p>
+      <h3><strong>if</strong> Statement</h3>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+if (conditional expression):
+   #statements
+      </code></pre>
+      </div>
+      
+      <h3><strong>if-else</strong> Statement</h3>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+if (conditional expression):
+   #statements
+else:
+   #statements
+      </code></pre>
+      </div>
+      
+      <h3><strong>if-elif-else</strong> Statement</h3>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+if (conditional expression):
+   #statements
+elif (conditional expression):
+   #statements
+else:
+   #statements
+      </code></pre>
+      </div>
+      
+      <h3>Nested <strong>if-else</strong> Statement</h3>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+if (conditional expression):
+   if (conditional expression):
+      #statements
+   else:
+      #statements
+else:
+   #statements
+      </code></pre>
+      </div>
+      
+      <p>Example: </p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+a = 15
+b = 20
+c = 12
+if (a > b and a > c):
+   print(a, "is greatest")
+elif (b > c and b > a):
+   print(b, " is greatest")
+else:
+   print(c, "is greatest")
+      </code></pre>
+      </div>
+      
+      
+      <h2>Loops in Python</h2>
+      <p>A loop or iteration statement repeatedly execute a give statement,know as the loop body, until the given condition is false or 0.</p>
+      <h3><strong>for</strong> Loop</h3>
+      <p>The <strong>for</strong> loop of Python is designed to process the items of any sequence, such as a list or string, one by one.</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre><code class="language-python">
+for variable in sequence:
+      #statements_to_repeat
+         </code></pre>
+      </div>
+      <p>Example</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre>
+            <code class="language-python">
+for i in range(1, 101, 1):
+   print(i)
+            </code>
+         </pre>
+      </div>
+      
+      <h3><strong>while</strong> Loop</h3>
+      <p>A <strong>while</strong> loop is a conditional loop that will repeat the instructions within itself as long as a conditional remains true.</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)"> Copy Code</button>
+         <pre>
+            <code class="language-python">
+   while (logical-expression):
+   #loop Body
+            </code>
+         </pre>
+      </div>
+      <p>Example:</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)"> Copy Code</button>
+         <pre>
+            <code class="language-python">
+ i = 1
+while (i <= 100):
+    print(i)
+    i = i + 1
+            </code>
+         </pre>
+      </div>
+      
+      <h3><strong>break</strong> statement</h3>
+      <p>The <strong>break</strong> statement enables a program to skip over a part of the code. A break statement terminatees or stops the very loop it lies within and go the external body.</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy code</button>
+         <pre>
+            <code class="language-python">
+   for variable in sequence:
+      #statement1
+      if (condition):
+         break
+      #statement2
+   statements_after_loop
+            </code>
+         </pre>
+      </div>
+      <p>Example:</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy code</button>
+         <pre>
+            <code class="language-python">
+for i in range(1, 101, 1):
+   print(i, end=" ")
+   if (i == 50):
+      break
+   else:
+      print("banana")
+print("Thank you")</code></pre>
+      </div>
+      
+      <h3><strong>continue</strong> statement</h3>
+      <p>The <strong>continue</strong> statement skips the rest of the loop statements and causes the next iteration to occur.</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy code</button>
+         <pre>
+            <code class="language-python">
+for variable in sequence:
+      #statement1
+      if <condition>:
+         continue
+         #statement2
+         #statement3
+         #statement4</code></pre>
+      </div>
+      
+      <p>Example:</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy code</button>
+         <pre>
+            <code class="language-python">
+for i in [2, 3, 4, 6, 8, 0]:
+   if (i % 2 != 0):
+      continue
+   print(i)</code></pre>
+      </div>
+      
+      <h2>Function</h2>
+      <p>A function is a block of code that performs a specific task. You can pass parameters into a function. It helps us to make our code more organized and manageable.</p>
+      <h3>Function Defination & Function Call</h3>
+      <p><strong>def</strong> keyword is used before defining the function.</p>
+      <p>Whenever we need that block of code in our program, simply call that function name whenever needed. If parameters are passed during defining the function, we have to pass the parameters while calling that function.</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy code</button>
+         <pre>
+            <code class="language-python">
+def my_function():   #function defination
+   #statements
+my_function()        #function calling</code></pre>
+      </div>
+      <p>Example:</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy code</button>
+         <pre>
+def add(): # function definition
+   a = 10
+   b = 20
+   print(a + b)
+add() # function call</code></pre>
+      </div>
+      
+      <h3> <strong>return</strong> Statement in Python Function</h3>
+      <p>The function return statement returns the specified value or data item to the caller.</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy code</button>
+         <pre>
+return [value/expression]</code></pre>
+      </div>
+      
+      <h3>Arguments in Python Function</h3>
+      <p>Arguments are the values passed inside the parenthesis of the function while defining as well as while calling.</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy code</button>
+         <pre>
+def my_function(arg1, arg2, arg3, ...argn):
+   # statements
+my_function(arg1, arg2, arg3, ...argn)</code></pre>
+      </div>
+      <p>Example: </p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy code</button>
+         <pre>
+def add(a, b):
+   return a + b
+x = add(7, 8)
+print(x)</code></pre>
+      </div>
+      
+      <h2>Data Structures</h2>
+      <p>There different types of data structures like:
+      <ul style="margin-left: 30px;">
+         <li>Strings</li>
+         <li>Lists</li>
+         <li>Tuples</li>
+         <li>Sets</li>
+         <li>Dictionaries
+         <li>
+      </ul>
+      </p>
+      <h2>1.Strings</h2>
+      <p>Python string is a sequence of characters, and each character can be individually accessed using its index.</p>
+      <h3>Strings</h3>
+      <p>You can create strings by enclosing text in both forms of quotes - single quotes or double quotes:</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre>
+            <code class="language-python">
+variable_name = "String Data" #syntax
+str = "CodeWithIshant"
+print("String is", str)</code></pre>
+      </div>
+      <h3>Indexing</h3>
+      <p>The position of every character placed in the string starts from the 0th position and step by step it ends at length-1 position.</p>
+      <p>Slicing refers to obtaining a sub-string from the given string. The following code will include index 2, 3, and 4 for the variable named variable_name.</p>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre>
+            <code class="language-python">
+string_var[integer_start_value:integer_stop_value:integer_step_value]  #syntax
+variable_name[2:5]</code></pre>
+      </div>
+      <p>Here start and step value are considered 0 and 1 respectively if not mentioned/given/provided by the programmer.</p>
+      <h3>String Methods</h3>
+      <h4>Case Conversion</h4>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre>
+            <code class="language-python">
+text = "  Hello, Ishant!  "
+print(text.lower()) # lower() → " hello, ishant! "
+print(text.upper()) # upper() → " HELLO, ISHANT! "
+print(text.title()) # title() → " Hello, Ishant! "
+print(text.capitalize()) # capitalize() → " hello, ishant! "
+print(text.swapcase()) # swapcase() → " hELLO, iSHANT! "
+</code></pre>
+      </div>
+      </div>
+      
+      
+      <h4>Whitespace and Padding</h4>
+      <div class="code-box">
+         <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+         <pre>
+            <code class="language-python">
+print(text.strip()) # strip() → "Hello, Ishant!"
+print(text.lstrip()) # lstrip() → "Hello, Ishant! "
+print(text.rstrip()) # rstrip() → " Hello, Ishant!"
+print("42".zfill(5)) # zfill() → "00042"
+print("hi".center(10)) # center() → " hi "
+print("hi".ljust(10)) # ljust() → "hi "
+print("hi".rjust(10)) # rjust() → " hi"
+</code></pre>
+      </div>
+      </div>
+      <h4>Searching and Count</4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre>
+            <code class="language-python">
+print(text.find("Ishant")) # find() → 9 (index of first match)
+print(text.rfind("l")) # rfind() → 11 (last index of "l")
+print(text.index("Hello")) # index() → 2 (raises error if not found)
+print(text.count("l")) # count() → 3 (number of times "l" appears)
+</code></pre>
+         </div>
+         </div>
+         <h4>Start/End Checks</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre>
+            <code class="language-python">
+print(text.startswith(" He")) # startswith() → True
+print(text.endswith("! ")) # endswith() → True
+</code></pre>
+         </div>
+         </div>
+         <h4>Replacing and Splitting</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre>
+            <code class="language-python">
+print(text.replace("Ishant", "Dev")) # replace() → " Hello, Dev! "
+print(text.split(",")) # split() → [' Hello', ' Ishant! ']
+print(" | ".join(["Ishant", "Python"])) # join() → "Ishant | Python"
+</code></pre>
+         </div>
+         </div>
+         <h4>Validation Methods</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre>
+            <code class="language-python">
+print("123".isdigit()) # isdigit() → True
+print("abc".isalpha()) # isalpha() → True
+print("abc123".isalnum()) # isalnum() → True
+print("Hello".isupper()) # isupper() → False
+print("hello".islower()) # islower() → True
+print(" ".isspace()) # isspace() → True
+print("Hello".istitle()) # istitle() → True
+</code></pre>
+         </div>
+         </div>
+         <h4>Encoding and Formatting</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre>
+            <code class="language-python">
+print("Python".encode()) # encode() → b'Python' (bytes)
+print("Hello {0}".format("Ishant")) # format() → "Hello Ishant"
+print(f"Hello {'Ishant'}") # f-string → "Hello Ishant"
+</code></pre>
+         </div>
+         <h4>Casefold for Aggresive Lowering</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre>
+            <code class="language-python">
+print("Straße".casefold())  # casefold() → "strasse"
+</code></pre>
+         </div>
+         
+         <h4>Partitioning</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre>
+            <code class="language-python">
+print(text.partition(",")) # partition() → (' Hello', ',', ' Ishant! ')
+print(text.rpartition(",")) # rpartition() → (' Hello', ',', ' Ishant! ')
+</code></pre>
+         </div>
+         <h4>Splitting by Lines</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre>
+            <code class="language-python">
+multiline = "Line1\nLine2\nLine3"
+print(multiline.splitlines()) # splitlines() → ['Line1', 'Line2', 'Line3']
+</code></pre>
+         </div>
+         
+         
+         <h2>2.Lists</h2>
+         <p>A list is python represents list of comma-separated values of any data type between square brackets</p>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+lst = [element1, element2, ............]
+  </code></pre>
+         </div>
+         
+         <p>These elements can be of any data types</p>
+         
+         <h3>Indexing</h3>
+         <p>the position of every element placed in the list starts from the 0th and the step by step it end at length 1 position. List is ordered, indexed, mutable and the most flexible and dynamic collection of elements in Python.</p>
+         
+         <h3>Empty list</h3>
+         <p>this method allows you to create an empty list: </p>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+empty_list = []
+  </code></pre>
+         </div>
+         
+         
+         <h3>List Methods: </h3>
+         <h4>Adding Elements</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+fruits = ["apple", "banana", "mango"]
+fruits.append("orange")     # append() → Adds 'orange' at the end
+fruits.insert(1, "grape")   # insert() → Inserts 'grape' at index 1
+fruits.extend(["kiwi", "pear"]) # extend() → Adds multiple items
+  </code></pre>
+         </div>
+         
+         <h4>Removing Elements</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+fruits.remove("banana")   # remove() → Removes first occurrence
+fruits.pop()              # pop() → Removes and returns last item
+fruits.pop(1)             # pop(index) → Removes at index 1
+fruits.clear()            # clear() → Removes all items
+  </code></pre>
+         </div>
+         
+         <h4>Searching and Counting</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+fruits = ["apple", "banana", "apple", "grape"]
+print(fruits.index("apple"))   # index() → First index of 'apple'
+print(fruits.count("apple"))   # count() → Occurrences of 'apple'
+  </code></pre>
+         </div>
+         
+         <h4>Sorting and Reversing</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+fruits.sort()             # sort() → Alphabetical (in-place)
+fruits.sort(reverse=True) # sort(reverse=True) → Descending
+fruits.reverse()          # reverse() → Reverses the list
+  </code></pre>
+         </div>
+         
+         <h4>Sorted Copy (Without Modifying Original)</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+sorted_list = sorted(fruits)  # sorted() → Returns new sorted list
+  </code></pre>
+         </div>
+         
+         <h4>Copying and Joining</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+copy_list = fruits.copy()  # copy() → Shallow copy
+combined = fruits + ["kiwi", "melon"]  # + → Concatenation
+  </code></pre>
+         </div>
+         
+         <h4>Looping and Membership</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+for fruit in fruits:
+    print(fruit)           # Loop through list
+
+print("apple" in fruits)    # in → Check existence
+print("kiwi" not in fruits) # not in → Check non-existence
+  </code></pre>
+         </div>
+         
+         <h4>List Comprehension</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+squares = [x**2 for x in range(5)]        # → [0, 1, 4, 9, 16]
+evens = [x for x in range(10) if x % 2 == 0] # → Even numbers
+  </code></pre>
+         </div>
+         
+         <h4>Nested Lists (2D Lists)</h4>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+matrix = [[1, 2], [3, 4]]
+print(matrix[0][1])   # → 2 (element at row 0, col 1)
+  </code></pre>
+         </div>
+         
+         <h2>3. Tuples</h2>
+         <p>Tuples are represented as comma-separated values of any data type within parantheses unlike list. It's a ordered, indexed but non-mutable collection of comma-separated elements.</p>
+         
+         <h3>Indexing</h3>
+         The position of every element placed in the tuple starts from the 0th position and step by step it ends at length-1 position.
+         <h3>Creating Tuples</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+t1 = (1, 2, 3)         # Regular tuple
+t2 = 1, 2, 3           # Tuple without parentheses
+t3 = (5,)              # Single-element tuple (note the comma)
+empty = ()             # Empty tuple
+  </code></pre>
+         </div>
+         
+         <h3>Accessing Tuple Elements</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+print(t1[0])           # → 1 (first element)
+print(t1[-1])          # → 3 (last element)
+  </code></pre>
+         </div>
+         
+         <h3>Tuple Unpacking</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+a, b, c = t1
+print(a)  # → 1
+print(b)  # → 2
+print(c)  # → 3
+  </code></pre>
+         </div>
+         
+         <h3>Tuple Slicing</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+print(t1[1:])          # → (2, 3)
+print(t1[:2])          # → (1, 2)
+  </code></pre>
+         </div>
+         
+         <h3>Tuple Immutability</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+# t1[0] = 10 → Error: 'tuple' object does not support item assignment
+# Tuples are immutable
+  </code></pre>
+         </div>
+         
+         <h3>Using Tuples in Loops</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+for item in t1:
+    print(item)
+  </code></pre>
+         </div>
+         
+         <h3>Tuple Methods:</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+print(t1.count(2))     # → 1 (number of times 2 appears)
+print(t1.index(3))     # → 2 (index of element 3)
+  </code></pre>
+         </div>
+         
+         <h3>Nesting and Combining Tuples</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+nested = (t1, t2)
+combined = t1 + t2     # → (1, 2, 3, 1, 2, 3)
+  </code></pre>
+         </div>
+         
+         <h3>Tuple with Different Data Types</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+mix = ("Ishant", 18, 3.14, True)
+print(mix[0])  # → "Ishant"
+  </code></pre>
+         </div>
+         
+         <h2>4. Sets</h2>
+         <p>A set is a collection of multiple values in curly brackets. It is both unindexed and unordered.</p>
+         <h3>Creating Sets</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+s1 = {1, 2, 3}           # Set with integers
+s2 = set([4, 5, 6])      # Set from list
+s3 = set("hello")        # Set from string (no duplicates)
+empty_set = set()        # Correct way to create empty set
+  </code></pre>
+         </div>
+         <p>As Set is an unorederd, immutable, non-indexed type of collection. Duplicate elements are not allowed in it.</p>
+         <h3>Adding Elements to Set</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+s1.add(4)                # Adds a single element
+s1.update([5, 6])        # Adds multiple elements
+  </code></pre>
+         </div>
+         
+         <h3>Removing Elements from Set</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+s1.remove(2)             # Removes element; raises error if not present
+s1.discard(10)           # Removes element; does nothing if not present
+s1.pop()                 # Removes and returns an arbitrary element
+s1.clear()               # Empties the set
+  </code></pre>
+         </div>
+         
+         <h3>Set Operations (Union, Intersection, etc.)</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+a = {1, 2, 3}
+b = {3, 4, 5}
+
+print(a | b)             # Union → {1, 2, 3, 4, 5}
+print(a & b)             # Intersection → {3}
+print(a - b)             # Difference → {1, 2}
+print(a ^ b)             # Symmetric difference → {1, 2, 4, 5}
+  </code></pre>
+         </div>
+         
+         <h3>Set Membership and Looping</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+print(2 in a)            # → True
+for item in b:
+    print(item)
+  </code></pre>
+         </div>
+         
+         <h3>Set Comparisons</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+a = {1, 2}
+b = {1, 2, 3}
+
+print(a.issubset(b))     # → True
+print(b.issuperset(a))   # → True
+print(a.isdisjoint({4})) # → True (no common elements)
+  </code></pre>
+         </div>
+         
+         <h3>Frozen Sets (Immutable Sets)</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+f = frozenset([1, 2, 3])
+# f.add(4) → Error: 'frozenset' object has no attribute 'add'
+  </code></pre>
+         </div>
+         
+         <h2>5. Dictionaries</h2>
+         <p>The dictionary is an unordered set off comma-separated key:value within curly brackets. It is required that in dictioanry no duplicate keys are allowed , values are allowed.</p>
+         
+         <h3>Creating Dictionaries</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+person = {"name": "Alice", "age": 25}
+data = dict(city="Delhi", pin=110001)
+empty = {}               # Empty dictionary
+  </code></pre>
+         </div>
+         
+         <h3>Accessing Values</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+print(person["name"])     # → Alice
+print(person.get("age"))  # → 25
+print(person.get("gender", "Not Found"))  # → Default value if key doesn't exist
+  </code></pre>
+         </div>
+         
+         <h3>Modifying Dictionaries</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+person["age"] = 26        # Update value
+person["gender"] = "F"    # Add new key-value pair
+  </code></pre>
+         </div>
+         
+         <h3>Removing Items</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+del person["age"]         # Removes key 'age'
+person.pop("gender")      # Removes and returns value of 'gender'
+person.clear()            # Empties the dictionary
+  </code></pre>
+         </div>
+         
+         <h3>Looping Through Dictionary</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+for key in person:
+    print(key, person[key])   # Loop through keys
+
+for k, v in person.items():
+    print(f"{k}: {v}")        # Loop through key-value pairs
+  </code></pre>
+         </div>
+         
+         <h3>Dictionary Methods</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+keys = person.keys()          # Returns all keys
+values = person.values()      # Returns all values
+items = person.items()        # Returns key-value pairs
+copy_person = person.copy()   # Shallow copy
+  </code></pre>
+         </div>
+         
+         <h3>Using Dictionaries with `in`</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+print("name" in person)       # → True
+print("salary" not in person) # → True
+  </code></pre>
+         </div>
+         
+         <h3>Nested Dictionaries</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+students = {
+    "A": {"marks": 85, "age": 17},
+    "B": {"marks": 90, "age": 18}
+}
+print(students["A"]["marks"])  # → 85
+  </code></pre>
+         </div>
+         <h2>File Handling</h2>
+         <p>File Handling refers o reading or writing data form different types of files.</p>
+         <h3><strong>open()</strong> Function</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+variable_name = open("file name","mode")
+  </code></pre>
+         </div>
+         
+         <h3>Modes</h3>
+         <ol>
+            <li>r - to read content from file.</li>
+            <li>w - to write the content into file.</li>
+            <li>a - to append the existing content into file.</li>
+            <li>r+ - to read and write into the file. The previous data in the file will be cleared/deleted.</li>
+            <li>w+ - to write and read data . It will override the existing data.</li>
+            <li>a+ - to append and read data from the file. It won't override the existing data.</li>
+         </ol>
+         <p>Above all are for txt or csv file</p>
+         <p>Just add "b" after the first letter then it will be same case but for binary file.</p>
+         <h3><strong>close()</strong> Function</h3>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+variable_name.close()
+  </code></pre>
+         </div>
+         
+         <h3><strong>read()</strong> Function</h3>
+         <p>The read function contain 3 different methods: <strong>read()</strong>, <strong>readline()</strong>, and <strong>readlines()</strong></p>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+variable_name.read() #return one big string
+  </code></pre>
+         </div>
+         <p>It returns a list of lines.</p>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+variable_name.readlines()#return a list
+  </code></pre>
+         </div>
+         
+         <p>It returns one line at a time.</p>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+variable_name.readline()#return one line at a time
+  </code></pre>
+         </div>
+         
+         <h3><strong>write()</strong> Function</h3>
+         
+         <h2>Exception Handling</h2>
+         <p>An exception is an unusual condition that results in an interruption in the flow of a program.</p>
+         <h3><strong>try</strong> and <strong>except</strong></h3>
+         <p>A basic try-except block in Python. When the try block throws error the control goes to the except block. </p>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+try:
+   #[Statement body block]
+   raise Exception()
+except ExceptionName:
+   #[Error processing block]
+  </code></pre>
+         </div>
+         <h3><strong>else</strong></h3>
+         <p>The <strong>else</strong> block is executed if the try block has not raised any exception and the code has been runnin successfully. Its like we used if exception flase then.</p>
+         <div class="code-box">
+            <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+            <pre><code class="language-python">
+try:
+   #[Statement body block]
+except ExceptionName:
+   #[Error processing block]
+else:
+   #statement
+  </code></pre>
+         </div>
+         
+         <h3><strong>finally</strong></h3>
+         
+         
+         
+         
+         
+         
+   </main>
+   
+</body>
+
+</html>
