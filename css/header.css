@@ -1,0 +1,175 @@
+        .header {
+           position: fixed;
+           top: 0;
+           left: 0;
+           right: 0;
+           background: linear-gradient(-135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+           backdrop-filter: blur(10px);
+           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+           z-index: 100;
+           padding: 1rem 2rem;
+           transition: all 0.3s ease;
+        }
+        
+        .header-container {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           max-width: 1200px;
+           margin: 0 auto;
+        }
+        
+        .logo-section {
+           display: flex;
+           align-items: center;
+           gap: 0.8rem;
+        }
+        
+        .logo-img {
+           width: 40px;
+           height: 40px;
+           background: linear-gradient(45deg, blue, #00ffff);
+           border-radius: 8px;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           color: white;
+           font-weight: bold;
+           font-size: 1.2rem;
+           text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+           opacity: 1;
+        }
+        
+        .logo-text {
+           font-size: 1.7rem;
+           font-weight: bold;
+           color: white;
+           font-weight: 700;
+           text-decoration: none;
+           background: linear-gradient(45deg, red, #4ecdc4, #45b7d1, blue);
+           background-size: 400% 400%;
+           -webkit-background-clip: text;
+           -webkit-text-fill-color: transparent;
+           animation: gradientShift 5s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+
+           0%,
+           100% {
+              background-position: 0% 50%;
+           }
+           
+           50% {
+              background-position: 100% 50%;
+           }
+        }
+        
+        .navbar {
+           display: flex;
+           gap: 2rem;
+           align-items: center;
+        }
+        
+        .nav-link {
+           color: white;
+           text-decoration: none;
+           font-size: 1rem;
+           font-weight: 500;
+           padding: 0.5rem 1rem;
+           border-radius: 6px;
+           transition: all 0.3s ease;
+           position: relative;
+           overflow: hidden;
+        }
+        
+        .nav-link::before {
+           content: '';
+           position: absolute;
+           top: 0;
+           left: -100%;
+           width: 100%;
+           height: 100%;
+           background: linear-gradient(90deg, transparent, rgba(0, 255, 225, 0.6), transparent);
+           transition: left 0.5s;
+        }
+        
+        .nav-link:hover::before {
+           left: 100%;
+        }
+        
+        .nav-link:hover {
+           color: #0ff;
+           transform: translateY(-2px);
+           box-shadow: 0 5px 15px rgba(0, 255, 255, 0.8);
+        }
+        
+        .nav-link.active {
+           color: #0ff;
+           background: rgba(0, 255, 225, 0.1);
+           border: 1px solid rgba(0, 255, 225, 0.3);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+           display: none;
+           background: none;
+           border: none;
+           color: white;
+           font-size: 1.5rem;
+           cursor: pointer;
+           padding: 0.5rem;
+           transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-toggle:hover {
+           color: #0ff;
+           transform: rotate(90deg);
+        }
+        
+        
+        
+        @media (max-width: 768px) {
+           .header {
+              padding: 1rem;
+           }
+           
+           .navbar {
+              position: fixed;
+              top: 70px;
+              left: 0;
+              right: 0;
+              background: rgba(12, 12, 12, 0.95);
+              backdrop-filter: blur(15px);
+              flex-direction: column;
+              gap: 0;
+              padding: 1rem;
+              transform: translateY(-100%);
+              opacity: 0;
+              visibility: hidden;
+              transition: all 0.3s ease;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+           }
+           
+           .navbar.active {
+              transform: translateY(0);
+              opacity: 1;
+              visibility: visible;
+           }
+           
+           .nav-link {
+              width: 100%;
+              text-align: center;
+              padding: 1rem;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+           }
+           
+           .nav-link:last-child {
+              border-bottom: none;
+           }
+           
+           .mobile-menu-toggle {
+              display: block;
+           }
+           
+        }
