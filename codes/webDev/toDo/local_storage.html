@@ -4,11 +4,96 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <title></title>
+   <title>To-Do List</title>
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+      
+      body {
+         font-family: Arial, sans-serif;
+         background-color: #f4f4f4;
+         padding: 20px;
+      }
+      
+      .container {
+         max-width: 500px;
+         margin: 0 auto;
+         background: white;
+         border-radius: 10px;
+         padding: 30px;
+         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .input-box {
+         display: flex;
+         gap: 10px;
+         margin-bottom: 20px;
+      }
+      
+      #taskInput {
+         flex: 1;
+         padding: 10px;
+         border: 2px solid #ddd;
+         border-radius: 5px;
+         font-size: 16px;
+      }
+      
+      #taskInput:focus {
+         outline: none;
+         border-color: #007bff;
+      }
+      
+      #addTask {
+         padding: 10px 20px;
+         background: #007bff;
+         color: white;
+         border: none;
+         border-radius: 5px;
+         cursor: pointer;
+         font-size: 16px;
+      }
+      
+      #addTask:hover {
+         background: #0056b3;
+      }
+      
+      #taskList {
+         list-style: none;
+      }
+      
+      li {
+         background: #f8f9fa;
+         margin-bottom: 10px;
+         padding: 15px;
+         border-radius: 5px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         border-left: 4px solid #007bff;
+      }
+      
+      .delBtn {
+         background: #dc3545;
+         color: white;
+         border: none;
+         padding: 5px 10px;
+         border-radius: 3px;
+         cursor: pointer;
+         font-size: 14px;
+      }
+      
+      .delBtn:hover {
+         background: #c82333;
+      }
+   </style>
 </head>
 
 <body>
    <div class="container">
+      <h1 style="text-align: center; margin-bottom: 30px; color: #333;">My To-Do List</h1>
       <div class="input-box">
          <input type="text" name="taskInput" id="taskInput" placeholder="Enter your task.......">
          <button id="addTask">Add</button>
@@ -18,7 +103,92 @@
    
    
    <script type="text/javascript" charset="utf-8">
+      const taskInput = document.getElementById("taskInput");
+      const addTaskBtn = document.getElementById("addTask");
+      const taskList = document.getElementById("taskList");
       
+      // adding input validation on enter key press
+      taskInput.addEventListener("keypress", (e) => {
+         if (e.key === "Enter") addTask();
+      });
+      
+      addTaskBtn.addEventListener("click", addTask);
+      
+      // on window load, loading saved tasks
+      window.onload = loadTasks;
+      
+      function addTask() {
+         const taskText = taskInput.value.trim();
+         if (taskText === "") return;
+         
+         createTaskElement(taskText);
+         saveTask(taskText);
+         taskInput.value = "";
+      }
+      
+      function createTaskElement(taskText) {
+         const li = document.createElement("li");
+         li.textContent = taskText;
+         
+         // delete btn
+         const delBtn = document.createElement("button");
+         delBtn.textContent = "Delete";
+         delBtn.className = "delBtn";
+         
+         delBtn.onclick = () => {
+            li.remove();
+            deleteTask(taskText);
+         };
+         
+         li.appendChild(delBtn);
+         taskList.appendChild(li);
+      }
+      
+      function saveTask(taskText) {
+         try {
+            let tasks = getTasksFromStorage();
+            tasks.push(taskText);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+         } catch (error) {
+            console.log("Error saving task:", error);
+         }
+      }
+      
+      function loadTasks() {
+         try {
+            let tasks = getTasksFromStorage();
+            tasks.forEach(task => createTaskElement(task));
+         } catch (error) {
+            console.log("Error loading tasks:", error);
+            // Clear corrupted data
+            localStorage.removeItem("tasks");
+         }
+      }
+      
+      function deleteTask(taskText) {
+         try {
+            let tasks = getTasksFromStorage();
+            tasks = tasks.filter(t => t !== taskText);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+         } catch (error) {
+            console.log("Error deleting task:", error);
+         }
+      }
+      
+      function getTasksFromStorage() {
+         try {
+            const tasksData = localStorage.getItem("tasks");
+            if (tasksData === null || tasksData === "") {
+               return [];
+            }
+            const parsed = JSON.parse(tasksData);
+            return Array.isArray(parsed) ? parsed : [];
+         } catch (error) {
+            console.log("Corrupted tasks data, starting fresh:", error);
+            localStorage.removeItem("tasks");
+            return [];
+         }
+      }
    </script>
 </body>
 
