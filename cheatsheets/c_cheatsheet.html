@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,24 +8,37 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-   <link rel="stylesheet" href="/css/cheetsheet_pages.css" type="text/css" media="all" />
- <script src="/js/cheatsheet_pages.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" href="/css/cheetsheet_pages.css" type="text/css" media="all" />
+  <script src="/js/cheatsheet_pages.js" type="text/javascript" charset="utf-8"></script>
   
 </head>
+
 <body>
   <main>
     <h1>C Language Cheatsheet</h1>
-
+    
     <section class="intro">
-      <p>A minimal C cheatsheet covering important concepts with code examples.</p>
+      <p>"Access a comprehensive cheatsheet for C programming. This downloadable PDF offers concise explanations, examples, and quick references for functions, syntax, and key concepts. Perfect for both beginners and seasoned programmers."</p>
     </section>
-
+    
     <h2>Basics</h2>
     <p>Essential syntax for C language programs.</p>
+    <h2>Boilerplate Code</h2>
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      <pre><code class="language-c">#include &lt;stdio.h&gt; //header files
 
+int main() //main function
+{
+    //Your code here
+    return 0; //returning value to int main()
+}</code></pre>
+    </div>
+    
+    
     <h3>Printing Output to Console</h3>
     <p>The <strong>printf</strong> function is used to display text and variables on the screen:</p>
-
+    
     <div class="code-box">
       <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
       <pre><code class="language-c">#include &lt;stdio.h&gt;
@@ -34,8 +48,119 @@ int main() {
     return 0;
 }</code></pre>
     </div>
+    <h3>Taking user input</h3>
+    <p>The <strong>scanf</strong> function is used to take input from the user</p>
+    
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    scanf("format_specifier", &variables);
+    return 0;
+}</code></pre>
+    </div>
+    <p>We use <strong>&</strong> with the variable name to represent "address of". This is how the syntax works:</p>
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      <pre><code class="language-c">
+  int a;
+  scanf("%d", &a);//Store keyboard input in a variable with address(address of a or &a)
+  printf("%d", a);
+      </code></pre>
+    </div>
+    
+    <h2>Comments</h2>
+    <p>A comment is a code that is not executed by the complier, and the programmer uses it to annotate their code, providing explanations or reminders about the code's functionality, which aids in readability and future maintainance.</p>
+    <h3>Single line comment</h3>
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      <pre><code class="language-c">
+  //This is a single line comment
+      </code></pre>
+    </div>
+    <h3>Multi-line comment</h3>
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      <pre><code class="language-c">/* This is a 
+multi-line
+comment */</code></pre>
+    </div>
+    
+    <h2>Data types</h2>
+    <p>The data type defines the kind of data that can be stored in a variable, such as integers, floating-point numbers, characters, or more complex structures. It dictates how the data is stored, interpreted, and manipulated within the program.</p>
+    <h3>Character type</h3>
+    <p>The character type, often represented as a single octet (one byte), is used to store individual characters in the C programming language.</p>
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      <pre><code class="language-c">char variable_name;</code></pre>
+    </div>
+    <p>The format specifier for a character in C is "%c". To print a character, we use this specifier within the <strong>printf</strong> function, following the syntax like this:</p>
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      <pre><code class="language-c">char x;
+scanf(" %c",&x);
+printf("character is %c",x);</code></pre>
+    </div>
+    
+    <h3>Integer type</h3>
+    <p>To store non-decimal numeric values, an integer type is used</p>
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      <pre><code class="language-c">int variable_name;</code></pre>
+    </div>
+    <p>The format specifier of an integer is "%d"</p>
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      <pre><code class="language-c">int a;
+scanf("%d",&a);
+printf("%d",a);</code></pre>
+    </div>
+    <h3>Double type</h3>
+    <p>To store a double-precision floating-point value we use double.</p>
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      <pre><code class="language-c">double variable_name;</code></pre>
+    </div>
+    <p>The format specifier of double is "%lf"</p>
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      <pre><code class="language-c">double ch;
+scanf("%lf",&ch);
+printf("%lf",ch);</code></pre>
+    </div>
+    <h3>Void type</h3>
+    <p>The void type in C represents the absence of a type. It's often used in function declarations to specify that the function does not return any value. For example:</p>
+    <div class="code-box">
+      <button class="copy-btn" onclick="copyCode(this)">Copy Code</button>
+      <pre><code class="language-c">void myFunction() {
+// Function code here
+}</code></pre>
+    </div>
+    <p>In this context, the <strong>void</strong> keyword indicates that <strong>myFunction</strong> does not return a value. It can also be used for function parameters to indicate that a function takes no arguments.</p>
+    
+    <h2>Escape Sequences</h2>
+    <p>Escape sequences in C are combinations of characters that begin with a backslash (<strong>\</strong>) and are used to represent characters that cannot be typed directly. These sequences are interpreted in a special way when used inside string literals or character constants.</p>
+    <p>For example, the escape sequence <strong>\n</strong> represents a newline character, and <strong>\t</strong> represents a tab character. Here are some escape sequence characters used in C language.</p>
+    <h3>Alarm or Beep Sound</h3>
+    <p><strong>\a</strong> produce a beep sound</p>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
   </main>
-
-
+  
+  
 </body>
+
 </html>
