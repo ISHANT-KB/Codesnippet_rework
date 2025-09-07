@@ -102,7 +102,7 @@ import mysql.connector
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="your_mysql_password",  # Change this
+    password="your_mysql_password",  # Change this accordingly
     database="grocery_db"
 )
 
@@ -110,53 +110,86 @@ cursor = conn.cursor()
 
 # Function to add an item
 def add_item():
-    name = input("Enter item name: ")
-    price = float(input("Enter item price: "))
-    quantity = int(input("Enter quantity: "))
-    query = "INSERT INTO grocery_items (item_name, price, quantity) VALUES (%s, %s, %s)"
-    cursor.execute(query, (name, price, quantity))
-    conn.commit()
-    print("✅ Item added successfully.")
+    try:
+        name = input("Enter item name: ")
+        price = float(input("Enter item price: "))
+        quantity = int(input("Enter quantity: "))
+
+        query = "INSERT INTO grocery_items (item_name, price, quantity) VALUES (%s, %s, %s)"
+        cursor.execute(query, (name, price, quantity))
+        conn.commit()
+        print("✅ Item added successfully.")
+    except ValueError:
+        print("⚠️ Invalid input! Price must be a number and quantity must be an integer.")
+    except Exception as e:
+        print("⚠️ Error while adding item:", e)
 
 # Function to view all items
 def view_items():
-    cursor.execute("SELECT * FROM grocery_items")
-    rows = cursor.fetchall()
-    print("\n📦 Inventory:")
-    print("ID | Name         | Price   | Quantity")
-    print("---------------------------------------")
-    for row in rows:
-        print(f"{row[0]:<3} | {row[1]:<15} | ₹{row[2]:<8.2f} | {row[3]:<5}")
-    print()
+    try:
+        cursor.execute("SELECT * FROM grocery_items")
+        rows = cursor.fetchall()
+        print("\n📦 Inventory:")
+        print("ID | Name         | Price   | Quantity")
+        print("---------------------------------------")
+        for row in rows:
+            print(f'{row[0]:<3}| {row[1]:<12}| ₹{row[2]:<7.2f}|{row[3]})
+        print()
+    except Exception as e:
+        print("⚠️ Error while fetching items:", e)
 
 # Function to update item quantity or price
 def update_item():
-    item_id = int(input("Enter item ID to update: "))
-    new_price = float(input("Enter new price: "))
-    new_quantity = int(input("Enter new quantity: "))
-    query = "UPDATE grocery_items SET price = %s, quantity = %s WHERE item_id = %s"
-    cursor.execute(query, (new_price, new_quantity, item_id))
-    conn.commit()
-    print("🔄 Item updated successfully.")
+    try:
+        item_id = int(input("Enter item ID to update: "))
+        new_price = float(input("Enter new price: "))
+        new_quantity = int(input("Enter new quantity: "))
+
+        query = "UPDATE grocery_items SET price = %s, quantity = %s WHERE item_id = %s"
+        cursor.execute(query, (new_price, new_quantity, item_id))
+        conn.commit()
+
+        if cursor.rowcount > 0:
+            print("🔄 Item updated successfully.")
+        else:
+            print("❌ Item not found.")
+    except ValueError:
+        print("⚠️ Invalid input! Please enter valid numbers.")
+    except Exception as e:
+        print("⚠️ Error while updating item:", e)
 
 # Function to delete an item
 def delete_item():
-    item_id = int(input("Enter item ID to delete: "))
-    cursor.execute("DELETE FROM grocery_items WHERE item_id = %s", (item_id,))
-    conn.commit()
-    print("🗑️ Item deleted successfully.")
+    try:
+        item_id = int(input("Enter item ID to delete: "))
+        cursor.execute("DELETE FROM grocery_items WHERE item_id = %s", (item_id,))
+        conn.commit()
 
-# Function to search for an item by name
+        if cursor.rowcount > 0:
+            print("🗑️ Item deleted successfully.")
+        else:
+            print("❌ Item not found.")
+    except ValueError:
+        print("⚠️ Invalid input! Please enter a valid item ID.")
+    except Exception as e:
+        print("⚠️ Error while deleting item:", e)
+
+# Function to search for an item by name (case-insensitive)
 def search_item():
-    name = input("Enter item name to search: ")
-    query = "SELECT * FROM grocery_items WHERE item_name LIKE %s"
-    cursor.execute(query, (f"%{name}%",))
-    rows = cursor.fetchall()
-    print("\n🔍 Search Results:")
-    for row in rows:
-        print(f"ID: {row[0]} | Name: {row[1]} | Price: ₹{row[2]:.2f} | Quantity: {row[3]}")
-    if not rows:
-        print("❌ No matching items found.")
+    try:
+        name = input("Enter item name to search: ")
+        query = "SELECT * FROM grocery_items WHERE LOWER(item_name) LIKE %s"
+        cursor.execute(query, (f"%{name.lower()}%",))
+        rows = cursor.fetchall()
+
+        print("\n🔍 Search Results:")
+        if rows:
+            for row in rows:
+                print(f"ID: {row[0]} | Name: {row[1]} | Price: ₹{row[2]:.2f} | Quantity: {row[3]}")
+        else:
+            print("❌ No matching items found.")
+    except Exception as e:
+        print("⚠️ Error while searching item:", e)
 
 # Main menu
 def menu():
@@ -188,11 +221,12 @@ def menu():
             print("⚠️ Invalid choice. Please try again.")
 
 # Start the app
-menu()
-
-# Close MySQL connection
-cursor.close()
-conn.close()
+if __name__ == "__main__":
+    try:
+        menu()
+    finally:
+        cursor.close()
+        conn.close()
 </code></pre>
             </div>
          </div>
