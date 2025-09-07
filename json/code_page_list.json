@@ -1,0 +1,27 @@
+{"python":[
+   {
+      "name":"Digital Clock",
+      "description":"A clock using Python Tkinter module. A beginner level python tkinter project."
+   },
+   {
+      "name":"nonGUI Airline Management System",
+      "description":"A CLI based airline management system for beginner programmer who want to combine sql and python . Best for who want to work with database."
+   },{
+      "name":"nonGUI Bank Management System",
+      "description":"A CLI based Bank management system for beginner programmer who want to combine sql and python . Best for who want to work with database."
+   },
+   {
+      "name":"nonGUI Grocery Management System",
+      "description":"A CLI based Grocery management system for beginner programmer who want to combine sql and python . Best for who want to work with database."
+   }
+],
+"webdev":[
+   {
+      
+      "name":"Snake Game",
+      "description":"A game that is mostly the first game  made by a learner. It teach you logical thinking and dom manupulation with event handling"
+   },
+   {"name":"TO-DO list",
+   "description":"A simple to do app that use local storage to store task data. Best for begineer to learn localstorage."}
+]
+}
